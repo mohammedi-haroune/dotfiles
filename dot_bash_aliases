@@ -1,0 +1,4 @@
+# All aliases are defined in .aliases unless you have an explicit reason
+# We are keepping .bash_aliases file because it's been used by vscode and maybe
+# some other tools by default
+source .aliases

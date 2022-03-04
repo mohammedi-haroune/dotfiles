@@ -1,0 +1,88 @@
+#Git aliases
+# General git helpers
+
+alias ga="git add ."
+alias gb="git branch"
+alias gc="git clone"
+alias gd="git diff"
+alias gl="git log"
+alias gp="git push -u"
+
+# The --force-with-lease option is like --force
+# but will not overwrite other people'"s changes.
+alias gpf="git push --force-with-lease"
+
+alias gs="git status"
+alias rebasem="git fetch --all && git rebase origin/master"
+
+#cp part
+alias cpy="rsync --progress"
+alias rsync="rsync --progress --partial --append-verify"
+
+alias config='/usr/bin/git --git-dir=/home/mohammedi/.cfg/ --work-tree=/home/mohammedi'
+#alias python='python3'
+#alias pip='pip3'
+alias use-java8='sudo update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java && sudo update-alternatives --set javac /usr/lib/jvm/java-8-openjdk-amd64/bin/javac'
+alias use-java10='sudo update-alternatives --set java /usr/lib/jvm/java-11-openjdk-amd64/bin/java && sudo update-alternatives --set javac /usr/lib/jvm/java-11-openjdk-amd64/bin/javac'
+alias todo=$'vi +star +\'normal Go\' +\'r!date +\\%F\\ \\%T\' ~/todo.md +\'normal Go\' +\'normal Go\''
+alias next='bat ~/todo.md | grep "\[ \]" | bat'
+alias df='df -h | grep --color=never "nvme0n1p3\|nvme0n1p4\|Filesystem"'
+alias latex="pdflatex main.tex && bibtex main.aux && pdflatex main.text && evince main.pdf"
+
+function emacsclient_detach {
+	emacsclient </dev/null &>/dev/null -c $@ &! #zsh specific syntax for & disown
+}
+
+alias emacs="emacsclient_detach"
+alias emacst="emacsclient -nw"
+# alias vim=emacst
+alias copy="xclip -selection clipboard -i $@"
+alias youtube-dl-music="youtube-dl --continue --ignore-config --extract-audio --audio-format m4a $@"
+alias pytest-pravda="py.test --cov-report=html --cov=. --ignore-glob=\"**/test_app_*\" --ignore=\"tests/test_docker.py\" $@"
+
+alias setup-python-lsp="pip install --upgrade autoflake flake8 epc importmagic 'python-language-server[all]' ptvsd yapf ipython pyls-isort pyls-mypy pyls-black"
+
+alias run-mlflow="source venv/bin/activate && source .env && mlflow server --backend-store-uri postgresql://mlflow:mlflow@db:5432/mlflow --host 0.0.0.0 --port 5050 --default-artifact-root s3://models/ --gunicorn-opts '--worker-class gthread --timeout 120 --log-level debug'"
+
+alias open-ports="sudo netstat -tulpn | grep LISTEN"
+
+alias note="code /home/mohammedi/workspace/notes/docs/$1"
+alias tabula="java -Dfile.encoding=utf-8 -Xms256M -Xmx1024M -Dwarbler.port=9999 -jar tabula.jar"
+alias run="gcc -o $1 $1.c -lgsl -lgslcblas -lm && ./$1"
+
+function formatspeed {
+    # %05.2f means print a total of 4 chars (incluing the '.'), 2 after the comma
+    # and add padding with zeros if the total is < 5, so results will of the format
+    # xx.xx Mbps
+    # %5.2f is the same as above but padding with spaces
+    awk -F ',' '{printf "%.16s",$1; printf " -> "; printf "%5.2f Mbps\n",$2/1000000}'
+}
+
+SPEEDTEST_FILE=$HOME/.speedtest/speedtest.csv
+
+function showspeed {
+    # the spaces arround [] in the if statemants are mandatory
+    if [ -z "$1" ]; then number=10 else number="$1" fi
+    cat $SPEEDTEST_FILE | formatspeed | tail -n $number
+}
+
+function bestspeed {
+    # the spaces arround [] in the if statemants are mandatory
+    if [ -z "$1" ]; then number=1 else number="$1" fi
+    cat $SPEEDTEST_FILE | awk -F ',' '{print $2}' | sort -n | tail -n $number | xargs -I _ grep _ $SPEEDTEST_FILE | formatspeed
+}
+
+function kubectl-pull {
+    kubectl run -i --tty puller --image=$1 --restart=Never --overrides='{ "spec": { "imagePullSecrets": [{"name": "pravda-notebook-registry" }] } }' -- /bin/sh
+}
+
+function kubectl-pull-d {
+    kubectl run puller --image=$1 --restart=Never --overrides='{ "spec": { "imagePullSecrets": [{"name": "pravda-notebook-registry" }] } }' -- echo "Pulled succesuflly"
+}
+
+alias disable-minikube-docker-env="unset DOCKER_TLS_VERIFY DOCKER_HOST DOCKER_CERT_PATH MINIKUBE_ACTIVE_DOCKERD"
+alias kubectl-events="kubectl get events -o custom-columns=FirstSeen:.firstTimestamp,LastSeen:.lastTimestamp,Count:.count,From:.source.component,Type:.type,Reason:.reason,Message:.message --field-selector involvedObject.kind=Pod,involvedObject.name=$1"
+
+alias du=du -h --max-depth=1
+
+alias unzip-all=find . -name "*.zip" | xargs -P 5 -I fileName sh -c 'unzip -o -d "$(dirname "fileName")/$(basename -s .zip "fileName")" "fileName"'

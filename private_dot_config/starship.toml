@@ -1,0 +1,41 @@
+add_newline = false
+
+[gcloud]
+disabled = true
+
+[aws]
+disabled = true
+
+[kubernetes]
+format = '[$symbol$context]($style) in '
+disabled = false
+[kubernetes.context_aliases]
+"gke_amanee-ec1eb_us-central1-c_cluster-1" = "gke"
+"arn:aws:eks:us-east-2:351907214461:cluster/iko" = "eks"
+
+[git_status]
+conflicted = "🏳"
+# ahead = "🏎💨"
+# behind = "😰"
+# diverged = "😵"
+untracked = "🤷‍"
+stashed = "📦"
+modified = "📝"
+staged = '[\($count\)](green)'
+renamed = "👅"
+deleted = "🗑"  
+ahead = "⇡${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+behind = "⇣${count}"
+
+[git_branch]
+truncation_length = 40
+
+[docker_context]
+only_with_files = false  
+
+[rust]
+disabled = true
+
+[nodejs]
+disabled = true
