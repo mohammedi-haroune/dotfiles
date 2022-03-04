@@ -1,0 +1,206 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH="/home/mohammedi/.oh-my-zsh"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# ZSH_THEME="robbyrussell"
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# Caution: this setting can cause issues with multiline prompts (zsh 5.7.1 and newer seem to work)
+# See https://github.com/ohmyzsh/ohmyzsh/issues/5765
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+# plugins=(git)
+plugins=(
+    ######## Custom plugins ########
+    # It highlights the correct command with green and wrong ones with red alongside other things
+    # Install with `git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting`
+    zsh-syntax-highlighting
+    # It provides suggestions in gray color based on history, completion ... configurable via ZSH_AUTOSUGGEST_STRATEGY
+    # Install with `git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`
+    zsh-autosuggestions
+    # This projects aims at gathering/developing new completion scripts that are not available in Zsh yet. The scripts may be contributed to the Zsh project when stable enough.
+    # Install with `git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions`
+    zsh-completions
+    # This is a clean-room implementation of the Fish shell's history search feature, where you can type in any part of any command from history and then press chosen keys, such as the UP and DOWN arrows, to cycle through matches.
+    # Install with `git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search`
+    history-substring-search
+    ################################
+    git
+    rsync
+    colored-man-pages
+    colorize
+    copypath
+    copyfile
+    cp
+    screen
+    # conda-zsh-completion
+    # This plugin creates helpful shortcut aliases for many commonly used commands.
+    # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/common-aliases
+    common-aliases
+    # This plugin uses the command-not-found package for zsh to provide suggested packages to be installed if a command cannot be found.
+    # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/command-not-found
+    command-not-found
+    # This plugin searches the defined aliases and outputs any that match the command inputted. This makes learning new aliases easier.
+    # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/alias-finder
+    alias-finder
+    docker
+    docker-compose
+    # This plugin defines a function called extract that extracts the archive file you pass it, and it supports a wide variety of archive filetypes.
+    # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/extract
+    extract
+    pass
+    pip
+    python
+    # Easily prefix your current or previous commands with sudo by pressing esc twice
+    # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/sudo
+    sudo
+    taskwarrior
+    tmux
+    kubectl
+    aws
+    gcloud
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+# Alises are defined in .aliases file
+source ~/.aliases
+
+# Envs are defined in .envs file
+source ~/.envs
+
+# Secret envs are kept in a separate file since .envs file will be tracked in dotfiles repo
+source ~/.secret_envs
+
+eval "$(starship init zsh)"
+
+eval "$(mcfly init zsh)"
+
+##### Completions ######
+# Most of them are disabled because they slow down the shell
+
+# Completion functions for commands are stored in files with names beginning with an underscore _,
+# and these files should be placed in a directory listed in the $fpath variable.
+fpath=(~/.zsh/completion $fpath)
+
+# if [ /usr/local/bin/helm ]; then source <(helm completion zsh); fi
+# if [ /usr/local/bin/minikube ]; then source <(minikube completion zsh); fi
+
+# autoload -U compinit && compinit
+# autoload -U +X bashcompinit && bashcompinit
+# complete -o nospace -C /usr/local/bin/mc mc
+########################
+
+# Configure history
+# Commented because it's already configured, I was confused after not finding a
+# command that I thought I executed but I was wrong
+# HISTFILE=~/.zsh_history
+# HISTSIZE=10000
+# SAVEHIST=1000
+# setopt SHARE_HISTORY
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/mohammedi/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/mohammedi/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/mohammedi/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/mohammedi/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
