@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/mohammedi/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -74,16 +74,16 @@ DISABLE_MAGIC_FUNCTIONS="true"
 plugins=(
     ######## Custom plugins ########
     # It highlights the correct command with green and wrong ones with red alongside other things
-    # Install with `git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting`
+    # Install with `git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting`
     zsh-syntax-highlighting
     # It provides suggestions in gray color based on history, completion ... configurable via ZSH_AUTOSUGGEST_STRATEGY
-    # Install with `git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`
+    # Install with `git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`
     zsh-autosuggestions
     # This projects aims at gathering/developing new completion scripts that are not available in Zsh yet. The scripts may be contributed to the Zsh project when stable enough.
-    # Install with `git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions`
+    # Install with `git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=$HOME/.oh-my-zsh/custom}/plugins/zsh-completions`
     zsh-completions
     # This is a clean-room implementation of the Fish shell's history search feature, where you can type in any part of any command from history and then press chosen keys, such as the UP and DOWN arrows, to cycle through matches.
-    # Install with `git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search`
+    # Install with `git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-history-substring-search`
     history-substring-search
     ################################
     git
@@ -147,27 +147,27 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# alias zshconfig="mate $HOME/.zshrc"
+# alias ohmyzsh="mate $HOME/.oh-my-zsh"
 # Alises are defined in .aliases file
-source ~/.aliases
+source $HOME/.aliases
 
 # Envs are defined in .envs file
-source ~/.envs
+source $HOME/.envs
 
 # Secret envs are kept in a separate file since .envs file will be tracked in dotfiles repo
-source ~/.secret_envs
+[[ -s "$HOME/.secret_envs" ]] && source $HOME/.secret_envs
 
 eval "$(starship init zsh)"
 
-eval "$(mcfly init zsh)"
+# eval "$(mcfly init zsh)"
 
 ##### Completions ######
 # Most of them are disabled because they slow down the shell
 
 # Completion functions for commands are stored in files with names beginning with an underscore _,
 # and these files should be placed in a directory listed in the $fpath variable.
-fpath=(~/.zsh/completion $fpath)
+fpath=($HOME/.zsh/completion $fpath)
 
 # if [ /usr/local/bin/helm ]; then source <(helm completion zsh); fi
 # if [ /usr/local/bin/minikube ]; then source <(minikube completion zsh); fi
@@ -180,7 +180,7 @@ fpath=(~/.zsh/completion $fpath)
 # Configure history
 # Commented because it's already configured, I was confused after not finding a
 # command that I thought I executed but I was wrong
-# HISTFILE=~/.zsh_history
+# HISTFILE=$HOME/.zsh_history
 # HISTSIZE=10000
 # SAVEHIST=1000
 # setopt SHARE_HISTORY
@@ -203,4 +203,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
