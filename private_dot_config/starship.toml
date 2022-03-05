@@ -23,7 +23,7 @@ stashed = "📦"
 modified = "📝"
 staged = '[\($count\)](green)'
 renamed = "👅"
-deleted = "🗑"  
+deleted = "🗑"
 ahead = "⇡${count}"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 behind = "⇣${count}"
@@ -32,10 +32,22 @@ behind = "⇣${count}"
 truncation_length = 40
 
 [docker_context]
-only_with_files = false  
+only_with_files = false
 
 [rust]
 disabled = true
 
 [nodejs]
 disabled = true
+
+[python]
+symbol = " "
+
+[scala]
+symbol = " "
+
+[shlvl]
+symbol = " "
+
+[swift]
+symbol = "ﯣ "
